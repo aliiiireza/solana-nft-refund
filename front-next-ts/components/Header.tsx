@@ -51,20 +51,6 @@ const HeaderDefault = () => {
                             <WalletMultiButton/>
                         </div>
                     </div>
-                    <div className="v-header-statistics">
-                        <div className="v-header-statistics-box">
-                            <div className="v-header-statistics-box__count">0</div>
-                            <div className="v-header-statistics-box__title">Statistics</div>
-                        </div>
-                        <div className="v-header-statistics-box">
-                            <div className="v-header-statistics-box__count">0</div>
-                            <div className="v-header-statistics-box__title">Statistics</div>
-                        </div>
-                        <div className="v-header-statistics-box">
-                            <div className="v-header-statistics-box__count">0</div>
-                            <div className="v-header-statistics-box__title">Statistics</div>
-                        </div>
-                    </div>
                 </div>
                 <img src="/bee-01.png" className="v-header-top-bee"/>
                 <img src="/bee-02.png" className="v-header-bottom-bee"/>

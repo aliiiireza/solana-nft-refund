@@ -76,7 +76,7 @@
 
   &-menu {
     width: 100%;
-    height: 75px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,17 +86,18 @@
       height:auto;
       margin-bottom: 15px;
     }
-    height: calc(var(--v-header-height) / 2 - var(--v-header-content-margin-x));
     &-title {
       padding-left: 20px;
-      height: calc(var(--v-header-height) / 2);
-      line-height: calc(var(--v-header-height) / 2);
+      height: 100%;
+      display: flex;
+      align-items: center;
       color: #3d0a00;
       font-weight: bold;
       font-size: var(--v-header-title-font-size);
     }
     &-buttons {
       display: flex;
+      height: 100%;
       button {
         font-weight: 100;
         text-transform: uppercase;
