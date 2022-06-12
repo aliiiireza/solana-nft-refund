@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/index.scss";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import "@solana/wallet-adapter-react-ui/styles.css";
