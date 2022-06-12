@@ -31,38 +31,29 @@ const NftList = () => {
 
   return (
     <>
-      <div className={style.columnContainer}>
-        <div className={style.nftContainer}>
-          {nfts.length === 0 ? (
-            <h1> No NFTS for Refund </h1>
-          ) : (
-            <div className={style.columnContainer}>
-              <h3>Your Refundable Items</h3>
-              <div className={style.nftContainer}>
-                {nfts.map((nft) => {
-                  return (
-                    <NFTCard
-                      key={nft.Index}
-                      mint={nft.Mint}
-                      token_account={nft.TokenAccount}
-                      meta_account={nft.Meta}
-                      name={nft.Name}
-                      image={nft.Image}
-                      price={nft.Price}
-                      days={nft.Days}
-                      refund_nft={refund_nft}
-                      log_printer={log_printer}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
+      {nfts.length === 0 ? (
+          <h1 className="card-wrapper-description">No NFTS for Refund</h1>
+      ) : (
+          nfts.map((nft) => {
+            return (
+                <NFTCard
+                    key={nft.Index}
+                    mint={nft.Mint}
+                    token_account={nft.TokenAccount}
+                    meta_account={nft.Meta}
+                    name={nft.Name}
+                    image={nft.Image}
+                    price={nft.Price}
+                    days={nft.Days}
+                    refund_nft={refund_nft}
+                    log_printer={log_printer}
+                />
+            );
+          })
+      )}
         <div className={style.NFTLogSection}>
           <p>{log}</p>
         </div>
-      </div>
     </>
   );
 };

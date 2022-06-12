@@ -20,18 +20,26 @@ const NFTCard = ({
   };
   return (
     <>
-      <div className={style.card}>
-        <Image src={image} alt="honeyland" width={100} height={100} />
-        {/* <h1>{name}</h1> */}
-        <div className={style.cardContent}>
-          <p className={style.title}>{name}</p>
-          <p className={style.cardExtra}>price: {price}</p>
-          <p className={style.cardExtra}>days of hold: {days}</p>
-        </div>
-        <button className={style.cardButton} onClick={refundClicked}>
-          Refund
-        </button>
+      <div className="card-wrapper-grid-item">
+            <img src={image} />
+
+        <h4>{name}</h4>
+        <p>Days Of Hold: {days}</p>
+        <a><button type="button" onClick={refundClicked}>REFUND</button></a>
       </div>
+
+      {/*<div className="card-wrapper-grid-item">*/}
+        {/*<Image src={image} alt="honeyland" width={100} height={100} />*/}
+        {/* <h1>{name}</h1> */}
+        {/*<div className={style.cardContent}>*/}
+        {/*  <p className={style.title}>{name}</p>*/}
+        {/*  <p className={style.cardExtra}>price: {price}</p>*/}
+        {/*  <p className={style.cardExtra}>days of hold: {days}</p>*/}
+        {/*</div>*/}
+        {/*<button className={style.cardButton} onClick={refundClicked}>*/}
+        {/*  Refund*/}
+        {/*</button>*/}
+      {/*</div>*/}
     </>
   );
 };

@@ -1,38 +1,52 @@
 import type { NextPage } from "next";
+const anchor = require("@project-serum/anchor");
+import { useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import UserView from "../components/UserView";
+import { isTreasuryExist } from "../utils/utils";
+import { SOLANA_HOST } from "../utils/const";
+import { TREASURY_STATES } from "../utils/enums";
+import Header from "../components/Header";
+import NftList from "../components/NftList";
 
 const Home: NextPage = () => {
-  const { connected } = useWallet();
+  const wallet = useWallet();
+  const connection = new anchor.web3.Connection(SOLANA_HOST);
+  const [treasuryState, setTreasuryState] = useState(TREASURY_STATES.LOADING);
+
+  useEffect(() => {
+    setTreasuryState(TREASURY_STATES.LOADING);
+    isTreasuryExist(connection, wallet).then((exist) => {
+      setTreasuryState(
+        exist ? TREASURY_STATES.EXIST : TREASURY_STATES.NOT_EXIST
+      );
+    });
+  }, [wallet.connected]);
+
+  const renderByTreasuryState = () => {
+    switch (treasuryState) {
+      case TREASURY_STATES.LOADING:
+        return <h1 className="card-wrapper-description">Loading...</h1>;
+      case TREASURY_STATES.NOT_EXIST:
+        return (
+          <h1 className="card-wrapper-description">
+            Refund Program Has Been Ended.
+          </h1>
+        );
+      case TREASURY_STATES.EXIST:
+        return <NftList />;
+    }
+  };
 
   return (
     <div className="app">
-      {connected ? (
-        <UserView />
-      ) : (
-        <div className="loginWalletContainer">
-          <div className="loginWalletTitle">Log in to Honeyland</div>
-          <div className="loginWalletSubTitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt,
-            facilis!
-          </div>
-          <WalletMultiButton />
+      <Header />
+      <div className="card-wrapper">
+        <div className="card-wrapper-grid custom-scrollbar">
+          {renderByTreasuryState()}
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
 export default Home;
-
-/**
- * index
- * if user:
- * connected? yes: load wallet nfts ----- no: wait for wallet connection
- * load wallet nfts---->from wallet analyzer---->nft with price lable and button of refund
- * if admin:
- * if(tresury exist) show deposit withdraw button
- * if(!treasury exist) show create button
- *
- */
