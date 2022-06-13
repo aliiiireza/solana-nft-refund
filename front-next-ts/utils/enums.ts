@@ -1,4 +1,5 @@
 export enum TREASURY_STATES {
+    WALLET_NOT_CONNECTED,
     LOADING,
     EXIST,
     NOT_EXIST,

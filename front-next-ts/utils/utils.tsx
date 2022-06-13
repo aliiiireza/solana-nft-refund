@@ -6,7 +6,7 @@ import { PublicKey } from "@solana/web3.js";
 
 // This command makes an Lottery
 export function getProgramInstance(connection, wallet) {
-  if (!wallet.publicKey) throw new WalletNotConnectedError();
+  if (!wallet.publicKey) return;
 
   const provider = new anchor.AnchorProvider(
     connection,
