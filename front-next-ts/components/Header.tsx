@@ -34,11 +34,6 @@ const HeaderDefault = () => {
                     href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
                     rel="stylesheet"
                 />
-
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-                    rel="stylesheet"
-                />
             </Head>
             <div className="v-header">
                 <div className="v-header-logo">
