@@ -36,7 +36,7 @@ const NFTCard = ({
             onClick={!loading && refundClicked}
             disabled={loading}
           >
-            {loading ? "LOADING..." : "REFUND"}
+            {loading ? "REFUNDING..." : "REFUND"}
           </button>
         </a>
       </div>
