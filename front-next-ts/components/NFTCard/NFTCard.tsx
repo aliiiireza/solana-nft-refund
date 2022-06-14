@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { notify } from "../common/notify";
+import { notify } from "@/common/notify";
 const NFTCard = ({
   mint,
   token_account,
@@ -16,7 +16,8 @@ const NFTCard = ({
     try {
       const result = await refund_nft(mint, token_account, meta_account, price);
       notify({
-        message: "Nft successfully refunded" + result,
+        message: "Nft successfully refunded",
+        description: result,
         type: "success",
       });
     } catch (e) {
