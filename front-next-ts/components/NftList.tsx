@@ -1,7 +1,7 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import React, { useEffect, useState } from "react";
 import useRefundNFTPack from "../hooks/useRefundNFTPack";
-import NFTCard from "./NFTCard";
+import NFTCard from "./NFTCard/NFTCard";
 
 const NftList = () => {
   const [nfts, setNfts] = useState([]);

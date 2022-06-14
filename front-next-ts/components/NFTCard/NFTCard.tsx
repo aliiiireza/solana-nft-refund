@@ -1,5 +1,49 @@
 import React, { useState } from "react";
 import { notify } from "@/common/notify";
+
+interface NFTCardProps {
+  /**
+   * Mint address of the NFT
+   */
+  mint: string;
+  /**
+   * Token account address of the NFT
+   */
+  token_account: string;
+  /**
+   * Meta account address of the NFT
+   **/
+  meta_account: string;
+  /**
+   * Name of the NFT
+   */
+  name: string;
+  /**
+   * Image of the NFT
+   */
+  image: string;
+  /**
+   * Price of the NFT
+   */
+  price: string;
+  /**
+   * Days of hold of the NFT
+   */
+  days: number;
+  /**
+   * Refund NFT function
+   */
+  refund_nft?: (
+    min: string,
+    token_account: string,
+    meta_account: string,
+    price: string
+  ) => string;
+}
+
+/**
+ * NFT Card Component
+ */
 const NFTCard = ({
   mint,
   token_account,
@@ -7,9 +51,9 @@ const NFTCard = ({
   name,
   image,
   price,
-  days,
+  days = 0,
   refund_nft,
-}) => {
+}: NFTCardProps) => {
   const [loading, setLoading] = useState(false);
   const refundClicked = async () => {
     setLoading(true);
@@ -23,7 +67,6 @@ const NFTCard = ({
     } catch (e) {
       notify({ message: "Sorry, there was a problem", type: "error" });
     }
-    setLoading(false);
   };
   return (
     <>
