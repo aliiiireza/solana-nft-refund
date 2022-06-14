@@ -30,15 +30,3 @@ Primary.args = {
     return x + y + z + s;
   },
 };
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  mint: "",
-  token_account: "",
-  meta_account: "",
-  name: "Genesis #0453",
-  image: "",
-  price: "2.50 SOL",
-  days: "1",
-  refund_nft: () => {},
-};
