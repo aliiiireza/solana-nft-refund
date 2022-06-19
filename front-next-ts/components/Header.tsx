@@ -2,9 +2,11 @@ import Head from "next/head";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
-const HeaderDefault = () => {
-  const wallet = useWallet();
-
+const HeaderDefault = ({
+  title = "REFUNDING GENESIS EGGs",
+}: {
+  title?: string;
+}) => {
   return (
     <>
       <Head>
@@ -41,7 +43,7 @@ const HeaderDefault = () => {
         </div>
         <div className="v-header-content">
           <div className="v-header-menu">
-            <div className="v-header-menu-title">REFUNDING GENESIS EGGs</div>
+            <div className="v-header-menu-title">{title}</div>
             <div className="v-header-menu-buttons">
               <WalletMultiButton />
             </div>

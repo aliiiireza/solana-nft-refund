@@ -1,49 +1,25 @@
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { isTreasuryExist } from "../utils/utils";
-import { SOLANA_HOST } from "../utils/const";
-import { TREASURY_STATES } from "../utils/enums";
-import Header from "../components/Header";
-import NftList from "../components/NftList";
+import Header from "@/components/Header";
+import NftList from "@/components/NftList";
+import useTreasuryState from "@/hooks/useTreasuryState";
+import { TREASURY_STATES } from "@/utils/enums";
 
-const anchor = require("@project-serum/anchor");
+const Heading = ({ children }) => (
+  <h1 className="card-wrapper-description">{children}</h1>
+);
 
 const Home: NextPage = () => {
-  const wallet = useWallet();
-  const connection = new anchor.web3.Connection(SOLANA_HOST);
-  const [treasuryState, setTreasuryState] = useState(TREASURY_STATES.LOADING);
-
-  useEffect(() => {
-    if (!wallet.connected) {
-      setTreasuryState(TREASURY_STATES.WALLET_NOT_CONNECTED);
-    } else {
-      setTreasuryState(TREASURY_STATES.LOADING);
-      isTreasuryExist(connection, wallet).then((exist) => {
-        setTreasuryState(
-          exist ? TREASURY_STATES.EXIST : TREASURY_STATES.NOT_EXIST
-        );
-      });
-    }
-  }, [wallet.connected]);
+  const { treasuryState } = useTreasuryState();
 
   const renderByTreasuryState = () => {
-    switch (treasuryState) {
-      case TREASURY_STATES.WALLET_NOT_CONNECTED:
-        return (
-          <h1 className="card-wrapper-description">Wallet Not Connected</h1>
-        );
-      case TREASURY_STATES.LOADING:
-        return <h1 className="card-wrapper-description">Loading...</h1>;
-      case TREASURY_STATES.NOT_EXIST:
-        return (
-          <h1 className="card-wrapper-description">
-            Refund Program Has Been Ended
-          </h1>
-        );
-      case TREASURY_STATES.EXIST:
-        return <NftList />;
-    }
+    if (treasuryState === TREASURY_STATES.WALLET_NOT_CONNECTED)
+      return <Heading>Wallet Not Connected</Heading>;
+    if (treasuryState === TREASURY_STATES.LOADING)
+      return <Heading>Loading...</Heading>;
+    if (treasuryState === TREASURY_STATES.NOT_EXIST)
+      return <Heading>Refund Program Has Been Ended</Heading>;
+
+    return <NftList />;
   };
 
   return (
