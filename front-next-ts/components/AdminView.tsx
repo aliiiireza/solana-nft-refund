@@ -6,7 +6,7 @@ import { getProgramInstance } from "../utils/utils";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { clusterApiUrl, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import CreateTreasury from "./CreateTreasury";
-import OtherActionsTreasury from "./OtherActionsTreasury";
+import OtherActionsTreasury from "./ManageTreasury";
 import UserView from "./UserView";
 import useRefundNFTPack from "../hooks/useRefundNFTPack";
 

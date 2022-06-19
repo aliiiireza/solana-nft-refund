@@ -3,6 +3,9 @@ import Header from "@/components/Header";
 import AdminView from "@/components/AdminView";
 import useTreasuryState from "@/hooks/useTreasuryState";
 import { TREASURY_STATES } from "@/utils/enums";
+import Button from "@/components/Button/Button";
+import CreateTreasury from "@/components/CreateTreasury";
+import ManageTreasury from "@/components/ManageTreasury";
 
 const Heading = ({ children }) => (
   <h1 className="card-wrapper-description">{children}</h1>
@@ -19,12 +22,13 @@ const Home: NextPage = () => {
 
     if (!isAdmin) return <Heading>You Are Not Admin</Heading>;
 
-    if (treasuryState === TREASURY_STATES.NOT_EXIST) return <AdminView />;
-    if (treasuryState === TREASURY_STATES.EXIST) return <AdminView />;
+    if (treasuryState === TREASURY_STATES.NOT_EXIST) return <CreateTreasury />;
+    if (treasuryState === TREASURY_STATES.EXIST) return <ManageTreasury />;
   };
+
   return (
     <div className="app">
-      <Header title="TREASURY ADMIN" />
+      <Header title="HONEYLAND REFUND ADMIN PANEL" />
       <div className="card-wrapper">
         <div className="card-wrapper-grid custom-scrollbar">
           {renderByTreasuryState()}
