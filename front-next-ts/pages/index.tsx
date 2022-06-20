@@ -3,10 +3,7 @@ import Header from "@/components/Header";
 import NftList from "@/components/NftList";
 import useTreasuryState from "@/hooks/useTreasuryState";
 import { TREASURY_STATES } from "@/utils/enums";
-
-const Heading = ({ children }) => (
-  <h1 className="card-wrapper-description">{children}</h1>
-);
+import Heading from "@/components/Heading";
 
 const Home: NextPage = () => {
   const { treasuryState } = useTreasuryState();

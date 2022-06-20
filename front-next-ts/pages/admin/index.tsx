@@ -1,15 +1,10 @@
 import type { NextPage } from "next";
 import Header from "@/components/Header";
-import AdminView from "@/components/AdminView";
-import useTreasuryState from "@/hooks/useTreasuryState";
 import { TREASURY_STATES } from "@/utils/enums";
-import Button from "@/components/Button/Button";
+import useTreasuryState from "@/hooks/useTreasuryState";
 import CreateTreasury from "@/components/CreateTreasury";
 import ManageTreasury from "@/components/ManageTreasury";
-
-const Heading = ({ children }) => (
-  <h1 className="card-wrapper-description">{children}</h1>
-);
+import Heading from "@/components/Heading";
 
 const Home: NextPage = () => {
   const { isAdmin, treasuryState } = useTreasuryState();
